@@ -15,7 +15,7 @@ public class Patient {
       SimpleDoubleProperty weight, height;
       int id;
 
-    public Patient(int id,String name, String surname,int securityNum, String adress, String phone, String complaint, LocalDate birthday, double weight, double height) {
+    public Patient(int id,String name, String surname,int securityNum, String adress, String phone, String complaint, double weight, double height, LocalDate birthday) {
         this.id = id;
         this.name = new SimpleStringProperty(name);
         this.surname = new SimpleStringProperty(surname);
@@ -29,6 +29,8 @@ public class Patient {
     }
 
     public Patient() {
+        PatientDAOBase patientDAOBase = PatientDAOBase.getInstance();
+        this.id=patientDAOBase.getNextPatientID();
         this.name = new SimpleStringProperty("");
         this.surname = new SimpleStringProperty("");
         this.securityNum=new SimpleIntegerProperty(0);

@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `appointments` (
                                           id            INTEGER
                                               constraint patients_pk
                                                   primary key autoincrement,
-                                          date TIMESTAMP,
+                                          appoDate TIMESTAMP,
                                           patient INTEGER,
                                           FOREIGN KEY (patient) references patients(id)
 

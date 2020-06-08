@@ -1,19 +1,20 @@
 package project.doctors.office;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 public class Appointment {
     private int id;
     private Patient patient;
-    private LocalDate date;
-    private Time time;
+    private LocalDate appoDate;
+    private Time appoTime;
 
-    public Appointment(int id, Patient patient, LocalDate date, Time time) {
+    public Appointment(int id, Timestamp appoDate, Patient patient) {
         this.id = id;
         this.patient = patient;
-        this.date = date;
-        this.time = time;
+        this.appoDate = appoDate.toLocalDateTime().toLocalDate();
+        this.appoTime = Time.valueOf(appoDate.toLocalDateTime().toLocalTime());
     }
 
     public Appointment() {
@@ -35,19 +36,19 @@ public class Appointment {
         this.patient = patient;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getAppoDate() {
+        return appoDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setAppoDate(LocalDate appoDate) {
+        this.appoDate = appoDate;
     }
 
-    public Time getTime() {
-        return time;
+    public Time getAppoTime() {
+        return appoTime;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setAppoTime(Time appoTime) {
+        this.appoTime = appoTime;
     }
 }
