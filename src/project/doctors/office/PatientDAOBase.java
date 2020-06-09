@@ -70,7 +70,7 @@ public class PatientDAOBase implements PatientDAO {
 
     private Patient getPatientFromResultSet(ResultSet rs) throws SQLException {
         return new Patient(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4), rs.getString(5), rs.getString(6)
-                , rs.getString(7), rs.getDouble(9), rs.getDouble(10), rs.getDate(7).toLocalDate());
+                , rs.getString(7), rs.getDouble(9), rs.getDouble(10), rs.getDate(8).toLocalDate());
     }
 
 
@@ -139,12 +139,13 @@ public class PatientDAOBase implements PatientDAO {
             updatePatientStatement.setString(1, patient.getName());
             updatePatientStatement.setString(2, patient.getSurname());
             updatePatientStatement.setString(3, patient.getPhone());
-            updatePatientStatement.setString(4, patient.getAdress());
-            updatePatientStatement.setString(5, patient.getComplaint());
-            updatePatientStatement.setDate(6, Date.valueOf(patient.getBirthday()));
-            updatePatientStatement.setDouble(7, patient.getWeight());
-            updatePatientStatement.setDouble(8, patient.getHeight());
-            updatePatientStatement.setInt(9, patient.getId());
+            updatePatientStatement.setInt(4,patient.getSecurityNum());
+            updatePatientStatement.setString(5, patient.getAdress());
+            updatePatientStatement.setString(6, patient.getComplaint());
+            updatePatientStatement.setDate(7, Date.valueOf(patient.getBirthday()));
+            updatePatientStatement.setDouble(8, patient.getWeight());
+            updatePatientStatement.setDouble(9, patient.getHeight());
+            updatePatientStatement.setInt(10, patient.getId());
             updatePatientStatement.executeUpdate();
 
         } catch (SQLException e) {

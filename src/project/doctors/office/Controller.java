@@ -1,11 +1,13 @@
 package project.doctors.office;
 
 import com.sun.applet2.preloader.event.ApplicationExitEvent;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -35,7 +37,7 @@ public class Controller {
 
         if (userFld.getText().isEmpty() || passFld.getText().isEmpty()) {
         // TODO: NAPRAVIT VALIDACIJU POLJA
-            if(userFld.getText().isEmpty()) {
+            if(userFld.getText().trim().isEmpty()) {
                 userFld.getStyleClass().add("invalid");
             } else {
                 userFld.getStyleClass().removeAll("invalid");
@@ -61,7 +63,7 @@ public class Controller {
             boolean flag=dao.validate(user,password);
 
         if (!flag) {
-            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            Alert alert =new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error while logging in.");
             alert.setContentText("You did not insert correct username or password, pleace try again.");
@@ -79,5 +81,12 @@ public class Controller {
 
     public void exitBtn(ActionEvent actionEvent) {
         Platform.exit();
+    }
+
+    public void removeStyle(KeyEvent keyEvent) {
+        passFld.getStyleClass().removeAll("invalid");
+        userFld.getStyleClass().removeAll("invalid");
+
+
     }
 }
