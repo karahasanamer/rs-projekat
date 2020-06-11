@@ -73,7 +73,7 @@ public class PatientDAOBase implements PatientDAO {
                 , rs.getString(7), rs.getDouble(9), rs.getDouble(10), rs.getDate(8).toLocalDate());
     }
 
-
+    //login provjera da li ima u bazi
     public boolean validate(String user, String password) throws SQLException {
 
 
@@ -124,8 +124,8 @@ public class PatientDAOBase implements PatientDAO {
         try {
             ResultSet rs = getPatientsStatement.executeQuery();
             while (rs.next()) {
-                Patient grad = getPatientFromResultSet(rs);
-                result.add(grad);
+                Patient patient = getPatientFromResultSet(rs);
+                result.add(patient);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -138,8 +138,8 @@ public class PatientDAOBase implements PatientDAO {
         try {
             updatePatientStatement.setString(1, patient.getName());
             updatePatientStatement.setString(2, patient.getSurname());
-            updatePatientStatement.setString(3, patient.getPhone());
-            updatePatientStatement.setInt(4,patient.getSecurityNum());
+            updatePatientStatement.setInt(3,patient.getSecurityNum());
+            updatePatientStatement.setString(4, patient.getPhone());
             updatePatientStatement.setString(5, patient.getAdress());
             updatePatientStatement.setString(6, patient.getComplaint());
             updatePatientStatement.setDate(7, Date.valueOf(patient.getBirthday()));
@@ -206,12 +206,13 @@ public class PatientDAOBase implements PatientDAO {
             addPatientStatement.setInt(1, id);
             addPatientStatement.setString(2, patient.getName());
             addPatientStatement.setString(3, patient.getSurname());
-            addPatientStatement.setString(4, patient.getPhone());
-            addPatientStatement.setString(5, patient.getAdress());
-            addPatientStatement.setString(6, patient.getComplaint());
-            addPatientStatement.setDate(7, Date.valueOf(patient.getBirthday()));
-            addPatientStatement.setDouble(8, patient.getWeight());
-            addPatientStatement.setDouble(9, patient.getHeight());
+            addPatientStatement.setInt(4,patient.getSecurityNum());
+            addPatientStatement.setString(5, patient.getPhone());
+            addPatientStatement.setString(6, patient.getAdress());
+            addPatientStatement.setString(7, patient.getComplaint());
+            addPatientStatement.setDate(8, Date.valueOf(patient.getBirthday()));
+            addPatientStatement.setDouble(9, patient.getWeight());
+            addPatientStatement.setDouble(10, patient.getHeight());
             addPatientStatement.executeUpdate();
 
         } catch (SQLException e) {

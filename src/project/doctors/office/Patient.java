@@ -15,7 +15,7 @@ public class Patient {
       SimpleDoubleProperty weight, height;
       int id;
 
-    public Patient(int id,String name, String surname,int securityNum, String adress, String phone, String complaint, double weight, double height, LocalDate birthday) {
+    public Patient(int id,String name, String surname,int securityNum, String phone, String adress, String complaint, double weight, double height, LocalDate birthday) {
         this.id = id;
         this.name = new SimpleStringProperty(name);
         this.surname = new SimpleStringProperty(surname);
@@ -44,7 +44,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return getName() + " " + getSurname() + " " + getSecurityNum();
+        return getName() + " " + getSurname() + ", " + getSecurityNum();
     }
 
     public String getName() {
