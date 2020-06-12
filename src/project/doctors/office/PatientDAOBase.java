@@ -159,7 +159,7 @@ public class PatientDAOBase implements PatientDAO {
                     appointment.getAppoDate().getMonth(), appointment.getAppoDate().getDayOfMonth(),
                     appointment.getAppoTime().getHours(), appointment.getAppoTime().getMinutes());
             addAppointmentStatement.setInt(1, getNextAppointmentID());
-            addAppointmentStatement.setTimestamp(2, Timestamp.valueOf(localDateTime.plusHours(2)));
+            addAppointmentStatement.setTimestamp(2, Timestamp.valueOf(localDateTime));
             addAppointmentStatement.setInt(3, appointment.getPatient().getId());
             addAppointmentStatement.executeUpdate();
 
@@ -173,7 +173,7 @@ public class PatientDAOBase implements PatientDAO {
             LocalDateTime localDateTime = LocalDateTime.of(appointment.getAppoDate().getYear(),
                     appointment.getAppoDate().getMonth(), appointment.getAppoDate().getDayOfMonth(),
                     appointment.getAppoTime().getHours(), appointment.getAppoTime().getMinutes());
-            updateAppointmentStatement.setTimestamp(1, Timestamp.valueOf(localDateTime.plusHours(2)));
+            updateAppointmentStatement.setTimestamp(1, Timestamp.valueOf(localDateTime));
             updateAppointmentStatement.setInt(2, appointment.getPatient().getId());
             updateAppointmentStatement.setInt(3, appointment.getId());
             updateAppointmentStatement.executeUpdate();

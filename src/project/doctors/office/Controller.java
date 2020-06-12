@@ -159,4 +159,10 @@ public class Controller {
     }
 
 
+    public void addAppointmentBtn(ActionEvent actionEvent) {
+
+    }
+
+    public void deleteAppointmentBtn(ActionEvent actionEvent) {
+    }
 }
