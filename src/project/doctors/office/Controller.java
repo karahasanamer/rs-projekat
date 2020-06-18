@@ -5,10 +5,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -161,8 +166,47 @@ public class Controller {
 
     public void addAppointmentBtn(ActionEvent actionEvent) {
 
+        if (patientAList.isEmpty()) return;
+        Stage stage = new Stage();
+        Parent root;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/makeAppointment.fxml"));
+            makeAppointmentController makeAppointmentController = new makeAppointmentController(null, dao.getPatients());
+            loader.setController(makeAppointmentController);
+            root = loader.load();
+            stage.setTitle("Make appointment");
+            stage.setScene(new Scene(root, 341, 387));
+            stage.setResizable(false);
+            stage.show();
+            stage.setOnHiding(event -> {
+                Appointment appointment = makeAppointmentController.getAppointment();
+                if (appointment != null) {
+                    dao.addAppointment(appointment);
+                    appointmentsAList.setAll(dao.getAppointments());
+                    tableAppointments.refresh();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void deleteAppointmentBtn(ActionEvent actionEvent) {
+        if (tableAppointments.getSelectionModel().isEmpty()) return;
+        Appointment appointment = tableAppointments.getSelectionModel().getSelectedItem();
+        if (appointment == null) return;
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm deletion");
+        alert.setHeaderText("Deleting appointment for " + appointment.getPatient().toString());
+        alert.setContentText("Are you sure you want to delete this appointment?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            dao.deleteAppointment(tableAppointments.getSelectionModel().getSelectedItem());
+            appointmentsAList.removeAll(tableAppointments.getSelectionModel().getSelectedItem());
+            tableAppointments.refresh();
+        }
     }
 }

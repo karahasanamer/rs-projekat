@@ -59,6 +59,7 @@ public class LoginController {
             alert.setHeaderText("Error while loging in.");
             alert.setContentText("You did not insert user or password, please try again.");
             alert.show();
+
             return;
         }
 
