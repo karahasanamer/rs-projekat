@@ -79,20 +79,22 @@ public class makeAppointmentController {
             alert.setContentText("Your date is not valid.");
             alert.show();
             datePicker.getStyleClass().add("invalid");
-        }else if(hoursFld.getText().trim().isEmpty() || minutesFld.getText().trim().isEmpty()){
+        }else if(hoursFld.getText().trim().isEmpty() || minutesFld.getText().trim().isEmpty() ||
+                !(Integer.parseInt(hoursFld.getText())<=24 && Integer.parseInt(hoursFld.getText())>0)||
+                !(Integer.parseInt(minutesFld.getText())<=60 && Integer.parseInt(minutesFld.getText())>0) ){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error while creating appointment.");
             alert.setContentText("Your hours or minutes field may be empty.");
             alert.show();
 
-            if(hoursFld.getText().trim().isEmpty()){
+            if(hoursFld.getText().trim().isEmpty() || !(Integer.parseInt(hoursFld.getText())<=24 && Integer.parseInt(hoursFld.getText())>0)){
                 hoursFld.getStyleClass().add("invalid");
             }else{
                 hoursFld.getStyleClass().removeAll("invalid");
             }
 
-            if(minutesFld.getText().trim().isEmpty()){
+            if(minutesFld.getText().trim().isEmpty()|| !(Integer.parseInt(minutesFld.getText())<=60 && Integer.parseInt(minutesFld.getText())>0)){
                 minutesFld.getStyleClass().add("invalid");
             }else{
                 minutesFld.getStyleClass().removeAll("invalid");
