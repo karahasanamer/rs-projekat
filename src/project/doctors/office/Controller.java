@@ -50,6 +50,7 @@ public class Controller {
         //patient list
         patientsList.setItems(patientAList);
         //apointmet table
+        tableAppointments.setItems(appointmentsAList);
         appointmentNumCol.setCellValueFactory(new PropertyValueFactory("id"));
         dateCol.setCellValueFactory(new PropertyValueFactory("appoDate"));
         timeCol.setCellValueFactory(new PropertyValueFactory("appoTime"));
@@ -116,16 +117,61 @@ public class Controller {
             patientsList.refresh();
         });
 
-        birthPicker.valueProperty().addListener((observableValue, s, t1) -> {if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        secNumFld.textProperty().addListener((observableValue, s, t1) -> {if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        weigthFld.textProperty().addListener((observableValue, s, t1) -> {if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        heigthFld.textProperty().addListener((observableValue, s, t1) -> {if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        adressFld.textProperty().addListener((observableValue, s, t1) -> {if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        phoneFld.textProperty().addListener((observableValue, s, t1) -> {if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        complaintFld.textProperty().addListener((observableValue, s, t1) -> {if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        nameFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        lastnameFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        secNumFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        birthPicker.valueProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        weigthFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        heigthFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        adressFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        phoneFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        complaintFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
 
 
 
+    }
+
+    public void validate(){
+        if(nameFld.getText().trim().isEmpty() || !nameFld.getText().matches("^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)?)$")) {
+            nameFld.getStyleClass().add("invalid");
+        } else {
+            nameFld.getStyleClass().removeAll("invalid");
+        }
+        if(lastnameFld.getText().trim().isEmpty()|| !lastnameFld.getText().matches("^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)?)$")) {
+            lastnameFld.getStyleClass().add("invalid");
+        } else {
+            lastnameFld.getStyleClass().removeAll("invalid");
+        }
+        if(secNumFld.getText().trim().equals("0") || !secNumFld.getText().matches("^[0-9]{6}$")) {
+            secNumFld.getStyleClass().add("invalid");
+        } else {
+            secNumFld.getStyleClass().removeAll("invalid");
+        }
+        if(adressFld.getText().trim().isEmpty()) {
+            adressFld.getStyleClass().add("invalid");
+        } else {
+            adressFld.getStyleClass().removeAll("invalid");
+        }
+        if(!birthPicker.getValue().isBefore(LocalDate.now())) {
+            birthPicker.getStyleClass().add("invalid");
+        }else{
+            birthPicker.getStyleClass().removeAll("invalid");
+        }
+        if(phoneFld.getText().trim().isEmpty() || !phoneFld.getText().matches("(\\+?( |-|\\.)?\\d{1,4}( |-|\\.|\\/)?)?(\\d{3})( |-|\\.|\\/)?(\\d{3}( |-|\\.|\\/)?\\d{3,4})")) {
+            phoneFld.getStyleClass().add("invalid");
+        } else {
+            phoneFld.getStyleClass().removeAll("invalid");
+        }
+        if(heigthFld.getText().trim().equals("0") || !heigthFld.getText().matches("[1-9][0-9][0-9]")) {
+            heigthFld.getStyleClass().add("invalid");
+        } else {
+            heigthFld.getStyleClass().removeAll("invalid");
+        }
+        if(weigthFld.getText().trim().equals("0")|| !weigthFld.getText().matches("[1-9][0-9][0-9]?")) {
+            weigthFld.getStyleClass().add("invalid");
+        } else {
+            weigthFld.getStyleClass().removeAll("invalid");
+        }
     }
 
 
@@ -135,6 +181,7 @@ public class Controller {
         patientsList.refresh();
         patientsList.getSelectionModel().selectLast();
         dao.addPatient(patientsList.getSelectionModel().getSelectedItem());
+
 
 
     }
