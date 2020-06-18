@@ -54,9 +54,9 @@
                                  <children>
                                     <Label text="Name: " />
                                     <Label text="Last name: " GridPane.rowIndex="1" />
-                                    <Label text="Weight: " GridPane.rowIndex="7" />
+                                    <Label text="Weight [kg]: " GridPane.rowIndex="7" />
                                     <Label text="Complaint: " GridPane.rowIndex="8" />
-                                    <Label text="Height: " GridPane.rowIndex="6" />
+                                    <Label text="Height [cm]: " GridPane.rowIndex="6" />
                                     <Label prefHeight="21.0" prefWidth="124.0" text="Security Number: " GridPane.rowIndex="2" />
                                     <Label text="Birthday:" GridPane.rowIndex="3" />
                                     <Label text="Adress: " GridPane.rowIndex="4" />
