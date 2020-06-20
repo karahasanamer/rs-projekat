@@ -1,0 +1,16 @@
+package project.doctors.office;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ControllerTest {
+
+    @Test
+    void addPatient() {
+    }
+
+    @Test
+    void deletePatient() {
+    }
+}

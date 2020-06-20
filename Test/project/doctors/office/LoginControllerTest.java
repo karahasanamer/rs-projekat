@@ -8,19 +8,32 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import javafx.scene.control.TextField;
+import org.testfx.matcher.base.WindowMatchers;
+
 import java.awt.*;
+import java.io.File;
 import java.lang.reflect.Field;
 import java.text.Format;
 
+import static java.awt.SystemColor.window;
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
 class LoginControllerTest {
+    LoginController reset;
     @Start
     public void start(Stage primaryStage) throws Exception{
+        PatientDAOBase.removeInstance();
+        File dbfile = new File("database.db");
+        dbfile.delete();
+        PatientDAOBase dao = PatientDAOBase.getInstance();
+
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         loader.setController(new LoginController());
         Parent root =loader.load();
@@ -119,6 +132,30 @@ class LoginControllerTest {
         robot.clickOn("OK");
         assertTrue(!hasCss(field,"invalid"));
         assertTrue(hasCss(field2,"invalid"));
+
+    }
+
+    @Test
+    public void testLoginAllTrue(FxRobot robot){
+
+        robot.clickOn("#userFld");
+        KeyCode ctrl = KeyCode.CONTROL;
+
+        //If Os is MAC
+        if (System.getProperty("os.name").equals("Mac OS X"))
+            ctrl = KeyCode.COMMAND;
+        robot.press(ctrl).press(KeyCode.A).release(KeyCode.A).release(ctrl);
+        robot.press(KeyCode.DELETE).release(KeyCode.DELETE);
+        robot.write("Amer");
+        robot.clickOn("#passFld");
+        robot.press(ctrl).press(KeyCode.A).release(KeyCode.A).release(ctrl);
+        robot.press(KeyCode.DELETE).release(KeyCode.DELETE);
+        robot.write("123");
+        robot.lookup("#loginBtn");
+        robot.clickOn("#loginBtn");
+        robot.window("Doctors office");
+
+
 
     }
 }

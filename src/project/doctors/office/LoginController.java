@@ -32,12 +32,6 @@ public class LoginController {
        // appointmentsList = FXCollections.observableArrayList(dao.getAppointments());
     }
 
-    public void resetDao(){
-        PatientDAOBase.removeInstance();
-        File dbfile=new File("database.db.sql");
-        dbfile.delete();
-        dao=PatientDAOBase.getInstance();
-    }
 
     public void login(ActionEvent actionEvent) throws SQLException {
 
@@ -90,6 +84,7 @@ public class LoginController {
                 stage2.setTitle("Doctors office");
                 stage2.setScene(new Scene(root, 641, 566));
                 stage2.setResizable(false);
+
                 stage2.show();
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
 
