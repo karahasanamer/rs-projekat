@@ -70,6 +70,8 @@ public class LoginController {
             boolean flag=dao.validate(user,password);
 
         if (!flag) {
+            userFld.getStyleClass().add("invalid");
+            passFld.getStyleClass().add("invalid");
             Alert alert =new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error while logging in.");
