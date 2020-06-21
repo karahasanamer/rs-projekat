@@ -123,6 +123,7 @@ public class PatientDAOBase implements PatientDAO {
         ArrayList<Patient> result = new ArrayList();
         try {
             ResultSet rs = getPatientsStatement.executeQuery();
+
             while (rs.next()) {
                 Patient patient = getPatientFromResultSet(rs);
                 result.add(patient);

@@ -72,8 +72,7 @@ public class Controller {
             if (newValue == null) {
                 nameFld.setText("");
                 lastnameFld.setText("");
-                secNumFld.setText("");
-                secNumFld.clear();
+                secNumFld.setText("0");
                 birthPicker.setValue(LocalDate.now());
                 weigthFld.setText("");
                 heigthFld.setText("");
@@ -109,6 +108,17 @@ public class Controller {
 
             if(patientAList.isEmpty()) return;
             patientsList.getSelectionModel().getSelectedItem().setName(newValue);
+            dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());
+            appointmentsAList = FXCollections.observableArrayList(dao.getAppointments());
+            tableAppointments.setItems(appointmentsAList);
+            tableAppointments.refresh();
+            patientsList.setItems(patientAList);
+            patientsList.refresh();
+        });
+        secNumFld.textProperty().addListener((observableValue, oldValue, newValue) -> {
+
+            if(patientAList.isEmpty()) return;
+            if(!secNumFld.getText().isEmpty())patientsList.getSelectionModel().getSelectedItem().setSecurityNum(Integer.parseInt(newValue));
             dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());
             appointmentsAList = FXCollections.observableArrayList(dao.getAppointments());
             tableAppointments.setItems(appointmentsAList);
