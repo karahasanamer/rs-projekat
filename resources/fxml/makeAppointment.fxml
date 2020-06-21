@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="387.0"  prefWidth="341.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="387.0" prefWidth="341.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0" minWidth="10.0" prefWidth="136.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="205.0" />
@@ -77,7 +77,7 @@
       </VBox>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#confirmBtn" text="Confirm" />
+          <Button fx:id="confirmBtn" mnemonicParsing="false" onAction="#confirmBtn" text="Confirm" />
             <Button mnemonicParsing="false" onAction="#cancelBtn" text="Cancel" />
         </buttons>
          <padding>
