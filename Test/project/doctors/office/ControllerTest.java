@@ -63,7 +63,7 @@ class ControllerTest {
         PatientDAOBase dao2 = PatientDAOBase.getInstance();
         ArrayList<Patient> patients = dao2.getPatients();
         assertEquals("Sam", patients.get(4).getName());
-        assertEquals("Cool", patients.get(4).getSurname());
+        assertEquals("Cool", patients.get(4).getLastname());
 
 
     }
@@ -151,7 +151,7 @@ class ControllerTest {
         PatientDAOBase dao2 = PatientDAOBase.getInstance();
         ArrayList<Patient> patients = dao2.getPatients();
         assertEquals("The",patients.get(3).getName());
-        assertEquals("Rock",patients.get(3).getSurname());
+        assertEquals("Rock",patients.get(3).getLastname());
 
 
     }

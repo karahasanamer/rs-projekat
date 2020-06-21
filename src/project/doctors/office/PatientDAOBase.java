@@ -38,7 +38,7 @@ public class PatientDAOBase implements PatientDAO {
                     e1.printStackTrace();
                 }
             }
-            updatePatientStatement = connection.prepareStatement("UPDATE patients SET name=?, surname=?, securityNum=?, phone=?," +
+            updatePatientStatement = connection.prepareStatement("UPDATE patients SET name=?, lastname=?, securityNum=?, phone=?," +
                     "adress=?, complaint=?, birthday=?, weight=?, height=? WHERE  id=?");
 
             deletePatientStatement = connection.prepareStatement("DELETE FROM patients WHERE id=?");
@@ -138,7 +138,7 @@ public class PatientDAOBase implements PatientDAO {
     public void updatePatient(Patient patient) {
         try {
             updatePatientStatement.setString(1, patient.getName());
-            updatePatientStatement.setString(2, patient.getSurname());
+            updatePatientStatement.setString(2, patient.getLastname());
             updatePatientStatement.setInt(3,patient.getSecurityNum());
             updatePatientStatement.setString(4, patient.getPhone());
             updatePatientStatement.setString(5, patient.getAdress());
@@ -206,7 +206,7 @@ public class PatientDAOBase implements PatientDAO {
 
             addPatientStatement.setInt(1, id);
             addPatientStatement.setString(2, patient.getName());
-            addPatientStatement.setString(3, patient.getSurname());
+            addPatientStatement.setString(3, patient.getLastname());
             addPatientStatement.setInt(4,patient.getSecurityNum());
             addPatientStatement.setString(5, patient.getPhone());
             addPatientStatement.setString(6, patient.getAdress());

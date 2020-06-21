@@ -60,7 +60,7 @@ public class Controller {
         patientsList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (oldValue != null) {
                 nameFld.textProperty().unbindBidirectional(oldValue.nameProperty());
-                lastnameFld.textProperty().unbindBidirectional(oldValue.surnameProperty());
+                lastnameFld.textProperty().unbindBidirectional(oldValue.lastnameProperty());
                 secNumFld.textProperty().unbindBidirectional(oldValue.securityNumProperty());
                 birthPicker.valueProperty().unbindBidirectional(oldValue.birthdayProperty());
                 weightFld.textProperty().unbindBidirectional(oldValue.weightProperty());
@@ -81,7 +81,7 @@ public class Controller {
                 complaintFld.setText("");
             } else {
                 nameFld.textProperty().bindBidirectional(newValue.nameProperty());
-                lastnameFld.textProperty().bindBidirectional(newValue.surnameProperty());
+                lastnameFld.textProperty().bindBidirectional(newValue.lastnameProperty());
                 secNumFld.textProperty().bindBidirectional(newValue.securityNumProperty(), new NumberStringConverter("#"));
                 birthPicker.valueProperty().bindBidirectional(newValue.birthdayProperty());
                 weightFld.textProperty().bindBidirectional(newValue.weightProperty(), new NumberStringConverter());
@@ -96,7 +96,7 @@ public class Controller {
 
         lastnameFld.textProperty().addListener((observableValue, oldValue, newValue) -> {
 
-            patientsList.getSelectionModel().getSelectedItem().setSurname(newValue);
+            patientsList.getSelectionModel().getSelectedItem().setLastname(newValue);
             dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());
             appointmentsAList = FXCollections.observableArrayList(dao.getAppointments());
             tableAppointments.setItems(appointmentsAList);
@@ -162,7 +162,7 @@ public class Controller {
         } else {
             adressFld.getStyleClass().removeAll("invalid");
         }
-        if(!birthPicker.getValue().isBefore(LocalDate.now())) {
+        if(!birthPicker.getValue().isBefore(LocalDate.now().plusDays(1))) {
             birthPicker.getStyleClass().add("invalid");
         }else{
             birthPicker.getStyleClass().removeAll("invalid");

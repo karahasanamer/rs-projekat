@@ -9,16 +9,16 @@ import java.time.LocalDate;
 
 public class Patient {
 
-      SimpleStringProperty name,surname, adress, phone,complaint;
+      SimpleStringProperty name, lastname, adress, phone,complaint;
       SimpleIntegerProperty securityNum;
       SimpleObjectProperty<LocalDate>birthday;
       SimpleDoubleProperty weight, height;
       int id;
 
-    public Patient(int id,String name, String surname,int securityNum, String phone, String adress, String complaint, double weight, double height, LocalDate birthday) {
+    public Patient(int id, String name, String lastname, int securityNum, String phone, String adress, String complaint, double weight, double height, LocalDate birthday) {
         this.id = id;
         this.name = new SimpleStringProperty(name);
-        this.surname = new SimpleStringProperty(surname);
+        this.lastname = new SimpleStringProperty(lastname);
         this.securityNum=new SimpleIntegerProperty(securityNum);
         this.adress = new SimpleStringProperty(adress);
         this.phone = new SimpleStringProperty(phone);
@@ -32,7 +32,7 @@ public class Patient {
         PatientDAOBase patientDAOBase = PatientDAOBase.getInstance();
         this.id=patientDAOBase.getNextPatientID();
         this.name = new SimpleStringProperty("");
-        this.surname = new SimpleStringProperty("");
+        this.lastname = new SimpleStringProperty("");
         this.securityNum=new SimpleIntegerProperty(0);
         this.adress = new SimpleStringProperty("");
         this.phone = new SimpleStringProperty("");
@@ -44,7 +44,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return getName() + " " + getSurname() + ", " + getSecurityNum();
+        return getName() + " " + getLastname() + ", " + getSecurityNum();
     }
 
     public String getName() {
@@ -59,16 +59,16 @@ public class Patient {
         this.name.set(name);
     }
 
-    public String getSurname() {
-        return surname.get();
+    public String getLastname() {
+        return lastname.get();
     }
 
-    public SimpleStringProperty surnameProperty() {
-        return surname;
+    public SimpleStringProperty lastnameProperty() {
+        return lastname;
     }
 
-    public void setSurname(String surname) {
-        this.surname.set(surname);
+    public void setLastname(String lastname) {
+        this.lastname.set(lastname);
     }
 
     public String getAdress() {

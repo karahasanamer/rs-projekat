@@ -23,7 +23,7 @@ class PatientDAOBaseTest {
         int a=patients.size();
         Patient patient = new Patient();
         patient.setName("Patient");
-        patient.setSurname("Sick");
+        patient.setLastname("Sick");
         patient.setBirthday(LocalDate.now());
         patient.setComplaint("Test");
         patient.setHeight(180);

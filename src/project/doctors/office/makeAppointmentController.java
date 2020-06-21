@@ -85,7 +85,7 @@ public class makeAppointmentController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error while creating appointment.");
-            alert.setContentText("Your hours or minutes field may be empty.");
+            alert.setContentText("Entered time is not valid.");
             alert.show();
 
             if(hoursFld.getText().trim().isEmpty() || !(Integer.parseInt(hoursFld.getText())<=24 && Integer.parseInt(hoursFld.getText())>0)){
