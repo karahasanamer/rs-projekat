@@ -52,10 +52,10 @@ class ControllerTest {
         robot.write("Good guy ST");
         robot.clickOn("#phoneFld");
         robot.write("063/625-526");
-        robot.clickOn("#heigthFld");
+        robot.clickOn("#heightFld");
         robot.eraseText(1);
         robot.write("180");
-        robot.clickOn("#weigthFld");
+        robot.clickOn("#weightFld");
         robot.eraseText(1);
         robot.write("90");
         robot.clickOn("#complaintFld");
@@ -105,10 +105,10 @@ class ControllerTest {
         robot.write("");
         robot.clickOn("#phoneFld");
         robot.write("06/-");
-        robot.clickOn("#heigthFld");
+        robot.clickOn("#heightFld");
         robot.eraseText(1);
         robot.write("1");
-        robot.clickOn("#weigthFld");
+        robot.clickOn("#weightFld");
         robot.eraseText(1);
         robot.write("9");
 
@@ -122,9 +122,9 @@ class ControllerTest {
         assertTrue(hasCss(field, "invalid"));
         field = robot.lookup("#phoneFld").queryAs(TextField.class);
         assertTrue(hasCss(field, "invalid"));
-        field = robot.lookup("#heigthFld").queryAs(TextField.class);
+        field = robot.lookup("#heightFld").queryAs(TextField.class);
         assertTrue(hasCss(field, "invalid"));
-        field = robot.lookup("#weigthFld").queryAs(TextField.class);
+        field = robot.lookup("#weightFld").queryAs(TextField.class);
         assertTrue(hasCss(field, "invalid"));
 
     }

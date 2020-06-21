@@ -24,8 +24,8 @@ public class Controller {
     public DatePicker birthPicker;
     public TextField adressFld;
     public TextField phoneFld;
-    public TextField heigthFld;
-    public TextField weigthFld;
+    public TextField heightFld;
+    public TextField weightFld;
     public TextField complaintFld;
     public TableView<Appointment> tableAppointments;
     public ListView<Patient>patientsList;
@@ -63,8 +63,8 @@ public class Controller {
                 lastnameFld.textProperty().unbindBidirectional(oldValue.surnameProperty());
                 secNumFld.textProperty().unbindBidirectional(oldValue.securityNumProperty());
                 birthPicker.valueProperty().unbindBidirectional(oldValue.birthdayProperty());
-                weigthFld.textProperty().unbindBidirectional(oldValue.weightProperty());
-                heigthFld.textProperty().unbindBidirectional(oldValue.heightProperty());
+                weightFld.textProperty().unbindBidirectional(oldValue.weightProperty());
+                heightFld.textProperty().unbindBidirectional(oldValue.heightProperty());
                 adressFld.textProperty().unbindBidirectional(oldValue.adressProperty());
                 phoneFld.textProperty().unbindBidirectional(oldValue.phoneProperty());
                 complaintFld.textProperty().unbindBidirectional(oldValue.complaintProperty());
@@ -74,8 +74,8 @@ public class Controller {
                 lastnameFld.setText("");
                 secNumFld.setText("0");
                 birthPicker.setValue(LocalDate.now());
-                weigthFld.setText("");
-                heigthFld.setText("");
+                weightFld.setText("");
+                heightFld.setText("");
                 adressFld.setText("");
                 phoneFld.setText("");
                 complaintFld.setText("");
@@ -84,8 +84,8 @@ public class Controller {
                 lastnameFld.textProperty().bindBidirectional(newValue.surnameProperty());
                 secNumFld.textProperty().bindBidirectional(newValue.securityNumProperty(), new NumberStringConverter("#"));
                 birthPicker.valueProperty().bindBidirectional(newValue.birthdayProperty());
-                weigthFld.textProperty().bindBidirectional(newValue.weightProperty(), new NumberStringConverter());
-                heigthFld.textProperty().bindBidirectional(newValue.heightProperty(), new NumberStringConverter());
+                weightFld.textProperty().bindBidirectional(newValue.weightProperty(), new NumberStringConverter());
+                heightFld.textProperty().bindBidirectional(newValue.heightProperty(), new NumberStringConverter());
                 adressFld.textProperty().bindBidirectional(newValue.adressProperty());
                 phoneFld.textProperty().bindBidirectional(newValue.phoneProperty());
                 complaintFld.textProperty().bindBidirectional(newValue.complaintProperty());
@@ -131,8 +131,8 @@ public class Controller {
         lastnameFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
         secNumFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
         birthPicker.valueProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        weigthFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
-        heigthFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        weightFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
+        heightFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
         adressFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
         phoneFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
         complaintFld.textProperty().addListener((observableValue, s, t1) -> {validate(); if(patientAList.isEmpty()) return; dao.updatePatient(patientsList.getSelectionModel().getSelectedItem());});
@@ -172,15 +172,15 @@ public class Controller {
         } else {
             phoneFld.getStyleClass().removeAll("invalid");
         }
-        if(heigthFld.getText().trim().equals("0") || !heigthFld.getText().matches("[1-9][0-9][0-9]")) {
-            heigthFld.getStyleClass().add("invalid");
+        if(heightFld.getText().trim().equals("0") || !heightFld.getText().matches("[1-9][0-9][0-9]")) {
+            heightFld.getStyleClass().add("invalid");
         } else {
-            heigthFld.getStyleClass().removeAll("invalid");
+            heightFld.getStyleClass().removeAll("invalid");
         }
-        if(weigthFld.getText().trim().equals("0")|| !weigthFld.getText().matches("[1-9][0-9][0-9]?")) {
-            weigthFld.getStyleClass().add("invalid");
+        if(weightFld.getText().trim().equals("0")|| !weightFld.getText().matches("[1-9][0-9][0-9]?")) {
+            weightFld.getStyleClass().add("invalid");
         } else {
-            weigthFld.getStyleClass().removeAll("invalid");
+            weightFld.getStyleClass().removeAll("invalid");
         }
     }
 

@@ -91,12 +91,12 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField fx:id="heigthFld" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <TextField fx:id="heightFld" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                        <GridPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField fx:id="weigthFld" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                    <TextField fx:id="weightFld" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                        <GridPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>
