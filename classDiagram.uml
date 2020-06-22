@@ -3,17 +3,17 @@
   <ID>JAVA</ID>
   <OriginalElement>project.doctors.office</OriginalElement>
   <nodes>
-    <node x="1499.0" y="0.0">project.doctors.office.makeAppointmentController</node>
     <node x="0.0" y="0.0">project.doctors.office.PatientDAOBase</node>
+    <node x="1499.0" y="0.0">project.doctors.office.makeAppointmentController</node>
     <node x="559.0" y="1159.0">project.doctors.office.ControllerTest</node>
     <node x="1138.0" y="0.0">project.doctors.office.Controller</node>
     <node x="1396.0" y="1159.0">project.doctors.office.PatientDAOBaseTest</node>
     <node x="828.0" y="1159.0">project.doctors.office.makeAppointmentControllerTest</node>
-    <node x="1153.0" y="1159.0">project.doctors.office.LoginController</node>
     <node x="0.0" y="1159.0">project.doctors.office.Appointment</node>
+    <node x="1153.0" y="1159.0">project.doctors.office.LoginController</node>
     <node x="757.0" y="0.0">project.doctors.office.Patient</node>
-    <node x="427.0" y="862.0">project.doctors.office.PatientDAO</node>
     <node x="253.0" y="1159.0">project.doctors.office.LoginControllerTest</node>
+    <node x="427.0" y="862.0">project.doctors.office.PatientDAO</node>
     <node x="0.0" y="1520.0">project.doctors.office.Main</node>
   </nodes>
   <notes />
@@ -24,7 +24,7 @@
       <point x="0.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Tree" zoom="0.571039603960396" x="1473.8217990339685" y="800.532271803473" />
+  <settings layout="Tree" zoom="0.471039603960396" x="686.4535006620706" y="735.9742178361271" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
