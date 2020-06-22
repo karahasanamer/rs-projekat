@@ -28,8 +28,7 @@ public class LoginController {
 
     public LoginController() {
         dao = PatientDAOBase.getInstance();
-       // patientsList = FXCollections.observableArrayList(dao.getPatients());
-       // appointmentsList = FXCollections.observableArrayList(dao.getAppointments());
+
     }
 
 
@@ -93,10 +92,7 @@ public class LoginController {
             }
 
 
-          /*  Alert alert =new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Successful");
-            alert.setHeaderText("Login successful!");
-            alert.show();*/
+
         }
 
     }

@@ -16,7 +16,6 @@ public class PatientDAOBase implements PatientDAO {
     private PreparedStatement addPatientStatement;
     private PreparedStatement getAppointmentsStatement;
     private PreparedStatement addAppointmentStatement;
-    private PreparedStatement updateAppointmentStatement;
     private PreparedStatement getNextAppointmentIDStatement;
     private PreparedStatement deleteAppointmentStatement;
     private PreparedStatement deleteAppointmentsByPatientStatement;
@@ -48,7 +47,6 @@ public class PatientDAOBase implements PatientDAO {
             getAppointmentsStatement = connection.prepareStatement("SELECT * FROM appointments");
             getNextAppointmentIDStatement = connection.prepareStatement("SELECT MAX(id)+1 FROM appointments");
             addAppointmentStatement = connection.prepareStatement("INSERT INTO appointments VALUES (?,?,?)");
-            updateAppointmentStatement = connection.prepareStatement("UPDATE appointments SET appoDate=?, patient=? WHERE id=?");
             deleteAppointmentStatement = connection.prepareStatement("DELETE FROM appointments WHERE id = ?");
             deleteAppointmentsByPatientStatement = connection.prepareStatement("DELETE FROM appointments WHERE patient =?");
             loginStatement =connection.prepareStatement("SELECT * FROM login WHERE username = ? and password = ?");
@@ -169,20 +167,7 @@ public class PatientDAOBase implements PatientDAO {
         }
     }
 
-    public void updateAppointment(Appointment appointment) {
-        try {
-            LocalDateTime localDateTime = LocalDateTime.of(appointment.getAppoDate().getYear(),
-                    appointment.getAppoDate().getMonth(), appointment.getAppoDate().getDayOfMonth(),
-                    appointment.getAppoTime().getHours(), appointment.getAppoTime().getMinutes());
-            updateAppointmentStatement.setTimestamp(1, Timestamp.valueOf(localDateTime));
-            updateAppointmentStatement.setInt(2, appointment.getPatient().getId());
-            updateAppointmentStatement.setInt(3, appointment.getId());
-            updateAppointmentStatement.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     public void deletePatient(Patient patient) {
