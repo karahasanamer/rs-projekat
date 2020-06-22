@@ -26,7 +26,7 @@ public class Controller {
     public TextField phoneFld;
     public TextField heightFld;
     public TextField weightFld;
-    public TextField complaintFld;
+    public TextArea complaintFld;
     public TableView<Appointment> tableAppointments;
     public ListView<Patient>patientsList;
     public TableColumn appointmentNumCol;
