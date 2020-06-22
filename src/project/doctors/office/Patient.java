@@ -9,11 +9,11 @@ import java.time.LocalDate;
 
 public class Patient {
 
-      SimpleStringProperty name, lastname, adress, phone,complaint;
-      SimpleIntegerProperty securityNum;
-      SimpleObjectProperty<LocalDate>birthday;
-      SimpleDoubleProperty weight, height;
-      int id;
+     private SimpleStringProperty name, lastname, adress, phone,complaint;
+     private SimpleIntegerProperty securityNum;
+     private SimpleObjectProperty<LocalDate>birthday;
+     private  SimpleDoubleProperty weight, height;
+     private int id;
 
     public Patient(int id, String name, String lastname, int securityNum, String phone, String adress, String complaint, double weight, double height, LocalDate birthday) {
         this.id = id;
