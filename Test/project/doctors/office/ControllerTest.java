@@ -59,11 +59,17 @@ class ControllerTest {
         robot.eraseText(1);
         robot.write("90");
         robot.clickOn("#complaintFld");
-        robot.write("Broken arm");
+        robot.write("Broken arm ");
         PatientDAOBase dao2 = PatientDAOBase.getInstance();
         ArrayList<Patient> patients = dao2.getPatients();
         assertEquals("Sam", patients.get(4).getName());
         assertEquals("Cool", patients.get(4).getLastname());
+        assertEquals(Integer.parseInt("666666"), patients.get(4).getSecurityNum());
+        assertEquals("Good guy ST", patients.get(4).getAdress());
+        assertEquals("063/625-526", patients.get(4).getPhone());
+        assertEquals(Double.parseDouble("180"), patients.get(4).getHeight());
+        assertEquals(Double.parseDouble("90"), patients.get(4).getWeight());
+        assertEquals("Broken arm", patients.get(4).getComplaint());
 
 
     }
